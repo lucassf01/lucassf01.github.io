@@ -112,6 +112,38 @@ a.navbar-brand span {
   padding-bottom:30px;  
   margin-bottom: 80px;
 }
+.navbar-nav {
+    border-bottom:0;
+    margin-top: 25px;
+}
+.navbar-nav > li > a {
+    margin-right: 2px;
+    padding-top: 40px;
+    line-height: 1.42857143;
+    border: 0;
+    border-radius: 0 0 0 0;
+    text-transform:uppercase;
+    font-weight:600;
+    color:#fff !important;
+}
+.navbar-nav> li > a:hover {
+    background-color: #94A859;
+}
+.navbar-nav > li.active > a {
+    color: #fff;
+    cursor: default;
+    background-color:#94A859 !important;
+    border: 0;
+    border-bottom-color: transparent;
+
+}
+.navbar-nav > li.active > a:hover {
+    color: #fff;
+    border: 0;
+    background-color: #708059;
+    cursor: pointer;
+}
+
 .nav-tabs {
   border-bottom:0; 
 }
@@ -628,4 +660,20 @@ a.scrollup:hover{
 	opacity:1;
 	background-color:#36CBD4;
 	color:#fff;;	
+}
+
+@media screen and (max-width: 768px) {
+    .pagina{
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    
+    .navbar-nav > li > a {
+    padding: 10px;
+    text-align: center !important;
+    padding-left: 130px;
+    padding-right: 130px;
+    
+    }
+
 }
