@@ -11,7 +11,7 @@ body {
 	font-weight:300;
 	line-height:1.6em;
 	color:#333;
-  background: #fff;
+    background: #fff;
 }
 
 .pagina{
@@ -45,14 +45,9 @@ body {
 .subtitulo{
     font-size:27px; 
     margin-bottom:1px; 
-    margin-top:15px; 
+    margin-top:35px; 
     padding-left:8%; 
     padding-right:8%;
-}
-
-.chamada{
-    text-decoration:none;
-    color:#333; 
 }
 
 .autor{
@@ -62,7 +57,7 @@ body {
     text-align:center;
 }
 
-h1,h2,h3,h4,h5,h6 {
+hi,h2,h3,h4,h5,h6 {
 	color:#333;
 	line-height:1.1em;
 }
@@ -71,16 +66,16 @@ p {
 	color:#8a8d94;
 }
 a {
-    text-decoration:;
+    text-decoration:none;
     transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -webkit-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
     outline: none;
-	 color:#94A859;
+	color:#333;
 }
 a:hover {
-  text-decoration: ;
+  text-decoration: none;
   color:#94A859;	
 }
 
@@ -91,8 +86,7 @@ hr {
 .navbar-brand {
   
   float: left;
-  /*height: 50px; ANDRE*/
-  height: 100%;
+  height: 50px;
   padding: 15px 15px;
   font-size: 30px;
   line-height:60px;
@@ -109,20 +103,18 @@ a.navbar-brand span {
 	overflow-x: visible;
 	-webkit-overflow-scrolling: touch;
 	border-top: 0;
-	width: auto; /* ANDRE */
+	
 }
 .navbar-fixed-top {
   top: 0;
   border-width: 0 0 0;
   background-color:#16381d;
-  /*padding-bottom:30px; ANDRE*/
-  height: 100px;
+  padding-bottom:30px;  
   margin-bottom: 80px;
 }
 .navbar-nav {
     border-bottom:0;
     margin-top: 25px;
-    float: right; /* ANDRE */
 }
 .navbar-nav > li > a {
     margin-right: 2px;
@@ -610,7 +602,7 @@ footer {
 .last-div {
 	margin-top:40px;
     background: #16381d;
-    padding: 13px 0;
+    padding: 20px 0;
     position: relative;
 }
 
@@ -650,7 +642,7 @@ ul.social-network li a:hover {
 }
 
 a.scrollup{
-  color:#d3d3d3;
+    color:#fff;
 	height:55px;
 	width:55px;
 	font-size:22px;
@@ -663,11 +655,10 @@ a.scrollup{
 	opacity:0,5;
 	border-radius:50%;
 	z-index:999;
-  
 }
 a.scrollup:hover{
 	opacity:1;
-	background-color:#94A859;
+	background-color:#36CBD4;
 	color:#fff;;	
 }
 
@@ -684,55 +675,5 @@ a.scrollup:hover{
     padding-right: 130px;
     
     }
-}
 
-/* ANDRE */
-.container {
-  height: 100%;
-}
-
-.navbar-header {
-  height: 100%;
-}
-
-.navbar-brand > img {
-  height: 100%;
-  width: 100%;
-}
-
-.navbar-default .navbar-toggle {
-  position: absolute;
-  right: 10%;
-  top: 25px;
-  background: transparent; 
-}
-
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background: white; 
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: white;
-}
-
-.navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
-  background-color: #16381d;
-}
-
-@media (min-width: 768px) {
-  .navbar-header {
-    width: 30%;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar-header {
-    width: 60%;
-  }
-
-  .navbar-brand > img {
-    height: 75%;
-    width: 100%;
-    display: initial;
-  }
 }
