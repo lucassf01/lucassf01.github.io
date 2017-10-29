@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Linha do tempo</title>
 
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/animate.css">
@@ -24,6 +25,520 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+  <style>
+ /* -------------------------------- 
+
+Primary style
+
+-------------------------------- */
+      .pg-linhatempo{
+         margin-left: 0!important;
+         margin-right: 0!important;
+        
+      }
+img {
+  max-width: 100%;
+}
+
+h1, h2 {
+  font-family: "PT Serif", serif;
+  font-weight: bold;
+  color: #333;
+}
+      #ln-tempo h2,.cd-date{
+          font-size: 28px!important;
+      }
+      #ln-tempo .cd-timeline-content p{
+          font-size: 17px!important;
+          color: #333;
+      }
+      #ln-tempo .cd-read-more{
+        float: right;
+        width: 18%;
+        font-size: 15px;
+      }
+      #ln-tempo .cd-date{
+          
+      }
+
+
+/* -------------------------------- 
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+.cd-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.cd-container::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* -------------------------------- 
+
+Main components 
+
+-------------------------------- */
+header {
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  background: #303e49;
+}
+header h1 {
+  color: #ffffff;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+@media only screen and (min-width: 1170px) {
+  header {
+    height: 300px;
+    line-height: 300px;
+  }
+  header h1 {
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
+}
+
+#cd-timeline {
+  position: relative;
+  padding: 2em 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+#cd-timeline::before {
+  /* this is the vertical line */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #dadada;
+  linha central
+}
+@media only screen and (min-width: 1170px) {
+  #cd-timeline {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+  #cd-timeline::before {
+    left: 50%;
+    margin-left: -2px;
+  }
+}
+
+.cd-timeline-block {
+  position: relative;
+  margin: 2em 0;
+}
+.cd-timeline-block::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.cd-timeline-block:first-child {
+  margin-top: 0;
+}
+.cd-timeline-block:last-child {
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-block {
+    margin: 4em 0;
+  }
+  .cd-timeline-block:first-child {
+    margin-top: 0;
+  }
+  .cd-timeline-block:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cd-timeline-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #ffffff ;
+}
+/* icone da bolinha */
+.cd-timeline-img img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -18px;
+  margin-top: -18px;
+  
+}
+.cd-timeline-img.cd-primeiros {
+  background: #bf0411;
+}
+.cd-timeline-img.cd-jk {
+  background: #013f7a;
+}
+.cd-timeline-img.cd-acarlos {
+  background: #0f0f0f;
+}
+.cd-timeline-img.cd-alameda {
+  background: #046635;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-img {
+    width: 60px;
+    height: 60px;
+    left: 50%;
+    margin-left: -30px;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+  .cssanimations .cd-timeline-img.is-hidden {
+    visibility: hidden;
+  }
+  .cssanimations .cd-timeline-img.bounce-in {
+    visibility: visible;
+    -webkit-animation: cd-bounce-1 0.6s;
+    -moz-animation: cd-bounce-1 0.6s;
+    animation: cd-bounce-1 0.6s;
+  }
+}
+
+@-webkit-keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@-moz-keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -moz-transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+@keyframes cd-bounce-1 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.cd-timeline-content {
+  position: relative;
+  margin-left: 60px;
+  background: #f8f8f8;
+  border-radius: 0.25em;
+  padding: 1em;
+  border:1px solid #ededed;
+  box completo
+
+}
+.cd-timeline-content::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.cd-timeline-content h2 {
+  color: #303e49;
+  
+}
+.cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+.cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+  display: inline-block;
+}
+.cd-timeline-content p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+.cd-timeline-content .cd-read-more {
+  float: right;
+  padding: .8em 1em;
+  background: #f8f8f8;
+  color: grey;
+  border-radius: 0.25em;
+  border: solid 2px;
+  border-color: grey;
+  botÃ£o mais
+
+}
+.cd-timeline-content .cd-read-more:hover {
+  color: #93a859;
+  border-color: #93a859;
+}
+
+.no-touch .cd-timeline-content .cd-read-more:hover {
+  background-color: #000;
+  
+}
+.cd-timeline-content .cd-date {
+  float: left;
+  padding: .8em 0;
+  opacity: .7;
+}
+.cd-timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid #ffffff;
+}
+@media only screen and (min-width: 768px) {
+  .cd-timeline-content h2 {
+    font-size: 20px;
+    font-size: 1.25rem;
+  }
+  .cd-timeline-content p {
+    font-size: 16px;
+    font-size: 1rem;
+  }
+  .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
+  
+}
+@media only screen and (max-width: 768px){
+  .cd-timeline-img img{
+  display: block;
+  width: 26px;
+  height: 26px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -13px;
+  margin-top: -13px;
+  }
+      #ln-tempo .cd-read-more{
+        float: right;
+        width: 100%;
+        font-size: 15px;
+      }
+      #ln-tempo h2,.cd-date{
+          font-size: 20px!important;
+      }
+      #ln-tempo .cd-timeline-content p{
+          font-size: 12px!important;
+      }
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-content {
+    margin-left: 0;
+    padding: 1.6em;
+    width: 45%;
+  }
+  .cd-timeline-content::before {
+    top: 24px;
+    left: 100%;
+    border-color: transparent;
+    border-left-color: #ededed;
+    
+    
+  }
+  .cd-timeline-content .cd-read-more {
+    float: left;
+  }
+  .cd-timeline-content .cd-date {
+    position: absolute;
+    width: 100%;
+    left: 122%;
+    top: 0px;
+    font-size: 16px;
+    font-size: 1.5rem;
+    data/ano
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content {
+    float: right;
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
+    top: 24px;
+    left: auto;
+    right: 100%;
+    border-color: transparent;
+    border-right-color: #ededed;
+    setinha direita
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
+    float: right;
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
+    left: auto;
+    right: 122%;
+    text-align: right;
+  }
+  .cssanimations .cd-timeline-content.is-hidden {
+    visibility: hidden;
+  }
+  .cssanimations .cd-timeline-content.bounce-in {
+    visibility: visible;
+    -webkit-animation: cd-bounce-2 0.6s;
+    -moz-animation: cd-bounce-2 0.6s;
+    animation: cd-bounce-2 0.6s;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  /* inverse bounce effect on even content blocks */
+  .cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
+    -webkit-animation: cd-bounce-2-inverse 0.6s;
+    -moz-animation: cd-bounce-2-inverse 0.6s;
+    animation: cd-bounce-2-inverse 0.6s;
+  }
+}
+@-webkit-keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: translateX(20px);
+  }
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+@keyframes cd-bounce-2 {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100px);
+    -moz-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    transform: translateX(-100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -moz-transform: translateX(-20px);
+  }
+  100% {
+    -moz-transform: translateX(0);
+  }
+}
+@keyframes cd-bounce-2-inverse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    -o-transform: translateX(100px);
+    transform: translateX(100px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    -o-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+     
+      
+ </style>
   </head>
  
   <body>
@@ -36,7 +551,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
      </button>
-     <a class="navbar-brand page-scroll" href="index.html"><img src="img/campos.png" width="200px"></a>
+     <a class="navbar-brand page-scroll" href="index.php"><img src="img/campos.png" width="200px"></a>
   </div>
 
 
@@ -57,26 +572,427 @@
         <li>
            <a class="page-scroll" href="sobre.html">Sobre</a>
         </li>
-        <li>
-           <a class="page-scroll" href="contato">CONTATO</a>
-        </li>
      </ul>
   </div>
  </div>
 </nav>
  
-    <div class="pagina">
-        <h2 class="titulo">Linha do Tempo</h2>
-        <p class="texto">
-       Nam arcu augue, iaculis ac malesuada ut, blandit sit amet urna. Morbi nec tellus consequat, fringilla purus id, tincidunt enim. Fusce non sagittis libero, et euismod ligula. Nulla nisl quam, cursus vitae vestibulum in, placerat molestie est. Nulla cursus dolor quis dui rhoncus bibendum. Duis ornare lorem nisl, viverra rutrum enim luctus vel. Cras enim dolor, maximus et dui facilisis, rhoncus ultrices nisl. Nulla facilisi. Sed ligula felis, tristique a convallis at, facilisis ut turpis.  
-        </p>
-        <p class="texto">
-       Nam arcu augue, iaculis ac malesuada ut, blandit sit amet urna. Morbi nec tellus consequat, fringilla purus id, tincidunt enim. Fusce non sagittis libero, et euismod ligula. Nulla nisl quam, cursus vitae vestibulum in, placerat molestie est. Nulla cursus dolor quis dui rhoncus bibendum. Duis ornare lorem nisl, viverra rutrum enim luctus vel. Cras enim dolor, maximus et dui facilisis, rhoncus ultrices nisl. Nulla facilisi. Sed ligula felis, tristique a convallis at, facilisis ut turpis.  
-        </p>
+    <div class="pagina pg-linhatempo">
+      <div id="ln-tempo">
+            <section id="cd-timeline" class="cd-container">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-primeiros">
+				<img src="img/bolinha.png" alt="Bola">
+			</div> <!-- cd-timeline-img -->
 
-      <iframe src='https://cdn.knightlab.com/libs/timeline/latest/embed/?source=1cWqQBZCkX9GpzFtxCWHoqFXCHg-ylTVUWlnrdYMzKUI&font=Bevan-PotanoSans&maptype=toner&width=600&height=600' width='600' height='600' frameborder='0'></iframe>
-                                
-        
+			<div class="cd-timeline-content">
+        <h2>Primeira exibição de futebol em BH</h2>
+        <p>No dia 3 de maio de 1904 a bola rolou pela primeira vez em Belo Horizonte. Victor Serpa organizou uma exibição no Parque Municipal.</p>
+        <a href="primeiros.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Maio/1904</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/escudo.png" alt="Escudo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Fundação do Sport Club</h2>
+        <p>Victor Serpa funda o Sport Club, primeiro time de futebol de Belo Horizonte, em 10 de julho de 1904.</p>
+        <img src="img/sport-club.jpg" alt="Sport Club"><br><br>
+        <a href="primeiros.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Julho/1904</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Campo do Viserpa Foot-ball Club</h2>
+        <p>Um dos primeiros fora do Parque Municipal. Ficava entre as ruas Paraíba e Pernambuco, próximo à Avenida do Contorno.</p>
+        <a href="primeiros.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1905</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/escudo.png" alt="Escudo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Fundação do Athletico Mineiro Football Club</h2>
+        <p>Em 25 de março de 1908, é fundado o Athletico Mineiro Football Club, atual Clube Atlético Mineiro.</p>
+        <img src="img/cam.png" alt="Escudo Athletico"><br><br>
+        <a href="primeiros.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Março/1908</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Primeiros jogos no Prado Mineiro</h2>
+        <p>O hipódromo do Prado Mineiro recebe as primeiras partidas de futebol.</p>
+        <a href="prado.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1909</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-alameda">
+        <img src="img/escudo.png" alt="Escudo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Fundação do América Futebol Clube</h2>
+        <p>No dia 30 de abril de 1912, é fundado o América.</p>
+        <img src="img/afc.png" alt="Escudo América"><br><br>
+        <a href="primeiros.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Abril/1912</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/bolinha.png" alt="Bola">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Taça Bueno Brandão</h2>
+        <p>O Prado Mineiro sedia a Taça Bueno Brandão, precursora do Campeonato Mineiro e vencida pelo Athletico.</p>
+        <img src="img/athletico-bueno-brandao.jpg" alt="Athletico Bueno Brandão"><br><br>
+        <a href="prado.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1914</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-jk">
+        <img src="img/escudo.png" alt="Escudo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Fundação do Palestra Itália</h2>
+        <p>No dia 2 de janeiro de 1921, o Palestra Itália, atual Cruzeiro Esporte Clube, é fundado.</p>
+        <img src="img/palestra.png" alt="Escudo Palestra"><br><br>
+        <a href="jk.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Janeiro/1921</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do estádio do América</h2>
+        <p>No dia 6 de maio de 1923 o América estreia seu estádio, o primeiro de Belo Horizonte.</p>
+        <img src="img/estadio-america.jpg" alt="Estádio América"><br><br>
+        <a href="estadioamerica.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Maio/1923</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-jk">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do Estádio do Barro Preto</h2>
+        <p>Palestra e Flamengo fazem a partida de inauguração do estádio, em 1º de julho. Jogo terminou empatado em 3 a 3.</p>
+        <img src="img/jk-palestraxflamengo.jpg" alt="Palestra x Flamengo"><br><br>
+        <a href="jk.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Julho/1923</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/trofeu.png" alt="Troféu">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>América é decacampeão</h2>
+        <p>O América finaliza a polêmica série de dez títulos do Campeonato da Cidade.</p>
+        <a href="estadioamerica.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1925</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-jk">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Palestra é campeão em seu estádio</h2>
+        <p>No Barro Preto, Palestra se sagra campeão do Campeonato da Cidade alternativo de 1926, após a vitória de 10 a 1 sobre o Grêmio.</p>
+        <a href="jk.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Fevereiro/1927</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/bolinha.png" alt="Bola">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Atlhetico 9 x 2 Palestra Itália</h2>
+        <p>No estádio do América, acontece a maior goleada da história do duelo Atlético x Cruzeiro.</p>
+        <img src="img/9a2.jpg" alt="Jornal 9 a 2"><br><br>
+        <a href="estadioamerica.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Novembro/1927</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-alameda">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do Estádio Alameda</h2>
+        <p>Em 9 de setembro de 1928, América e Athletico fazem a primeira partida do estádio Alameda.</p>
+        <img src="img/alameda-28.jpg" alt="América x Athletico"><br><br>
+        <a href="alameda.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Setembro/1928</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do Estádio Antônio Carlos</h2>
+        <p>O confronto contra o Corinthians terminou em vitória athleticana por 4 a 2, no dia 30 de maio.</p>
+        <img src="img/partida-inauguracao-antonio-carlos.jpg" alt="Estádio Antônio Carlos"><br><br>
+        <a href="acarlos.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Maio/1929</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/trofeu.png" alt="Troféu">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Athletico é campeão da Taça Internacional de BH</h2>
+        <p>A partida contra o Vitória de Setúbal foi a primeira internacional de uma equipe mineira.</p>
+        <a href="acarlos.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Setembro/1929</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do Mercado Central</h2>
+        <p>Construído no local do antigo estádio do América, o Mercado é inaugurado no dia 7 de setembro.</p>
+        <img src="img/mercado.jpg" alt="Mercado Central"><br><br>
+        <a href="estadioamerica.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Setembro/1929</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração da iluminação do Antônio Carlos</h2>
+        <p>Em partida que contou com a presença de Jules Rimet, presidente da FIFA, o Athletico inaugura a iluminação do seu estádio.</p>
+        <img src="img/iluminacao-antonio-carlos.jpg" alt="iluminação Antônio Carlos"><br><br>
+        <a href="acarlos.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Setembro/1930</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do Estádio Raimundo Sampaio</h2>
+        <p>Popularmente conhecido como Independência, o estádio é inagurado no dia 25 de junho.</p>
+        <img src="img/independencia-copa-do-mundo.jpg" alt="Independência"><br><br>
+        <a href="jk3.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Junho/1950</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/trofeu.png" alt="Troféu">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Athletico é campeão do Campeonato da Cidade</h2>
+        <p>Comandado pelo "Trio Maldito", o Athletico conquista seu primeiro título na nova casa.</p>
+        <img src="img/trio maldito.jpg" alt="Trio Maldito"><br><br>
+        <a href="acarlos2.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1931</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/trofeu.png" alt="Troféu">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Athletico é campeão dos Campeões</h2>
+        <p>Foi considerado o primeiro título a nivel nacional de um time mineiro.</p>
+        <img src="img/1937.jpg" alt="Campeão dos Campeões"><br><br>
+        <a href="acarlos3.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Fevereiro/1937</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-jk">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Reinauguração do Estádio do Barro Preto</h2>
+        <p>Campo do Barro Preto passa por reformas e é reinaugurado como Estádio Juscelino Kubitschek de Oliveira. Cruzeiro e Botafogo fizeram a partida de inauguração, que terminou empatada em 1 a 1.</p>
+        <img src="img/cru-botafogo.jpg" alt="Cruzeiro x Botafogo"><br><br>
+        <a href="jk2.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Julho/1945</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-alameda">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Estádio Alameda é reinaugurado</h2>
+        <p>Prefeito Otacílio Negrão de Lima reinaugura o estádio com o chute inicial.</p>
+        <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/eHI-vX7xgjs' frameborder='0' allowfullscreen></iframe></div><br><br>
+        <a href="alameda.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Maio/1948</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-alameda">
+        <img src="img/bolinha.png" alt="Bola">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Final do Campeonato Mineiro de 1948</h2>
+        <p>O jogo que não terminou: decisão sobre o título foi da Justiça Desportiva.</p>
+        <img src="img/final 48.jpg" alt="Final 48"><br><br>
+        <a href="alameda.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Maio/1948</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/trofeu.png" alt="Troféu">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Atlético é campeão do Campeonato da Cidade</h2>
+        <p>Último título atleticano jogando apenas no seu estádio.</p>
+        <a href="acarlos3.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1950</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-jk">
+        <img src="img/bolinha.png" alt="Bola">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Última partida do Cruzeiro no Estádio JK</h2>
+        <p>Equipe profissional do Cruzeiro faz sua última partida no estádio. Clube vence o amistoso contra o Democrata de Sete Lagoas por 4 a 0, no dia 14 de fevereiro.</p>
+        <a href="jk3.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Fevereiro/1965</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-primeiros">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do Estádio Governador Magalhães Pinto</h2>
+        <p>O Mineirão é inaugurado no dia 5 de setembro.</p>
+        <img src="img/mineirao-65.jpg" alt="Mineirão"><br><br>
+        <a href="jk3.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Setembro/1965</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-alameda">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Venda controversa do Alameda</h2>
+        <p>Estádio Otacílio Negrão de Lima é vendido para o Grupo Pão de Açúcar, na presidência de Ruy da Costa Val.</p>
+        <a href="alameda.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1973</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-jk">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>JK é derrubado para a construção do parque esportivo</h2>
+        <p>Campo foi desativado e teve seu terreno transformado na sede e no clube social.</p>
+        <img src="img/jkderrubado.jpg" alt="JK derrubado"><br><br>
+        <a href="jk3.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">1985</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+    <div class="cd-timeline-block">
+      <div class="cd-timeline-img cd-acarlos">
+        <img src="img/campo.png" alt="Campo">
+      </div> <!-- cd-timeline-img -->
+
+      <div class="cd-timeline-content">
+        <h2>Inauguração do shopping Diamond Mall</h2>
+        <p>Construído no local do antigo estádio Antônio Carlos, o shopping Diamond Mall é inagurado no dia 1º de novembro.</p>
+        <img src="img/diamond.jpg" alt="Diamond Mall"><br><br>
+        <a href="acarlos4.html" target="_blank" class="cd-read-more">Mais</a>
+        <span class="cd-date">Novembro/1996</span>
+      </div> <!-- cd-timeline-content -->
+    </div> <!-- cd-timeline-block -->
+
+	</section> 
+       </div>
     </div>
       <footer>
 		  <div class="inner-footer">
@@ -102,7 +1018,7 @@
 			</div>
 		
 			
-		
+			<a href="" class="scrollup"><i class="fa fa-chevron-up"></i></a>	
 				
 			
 		</div>	
@@ -118,6 +1034,7 @@
 	<script src="js/jquery.bxslider.min.js"></script>
 	<script type="text/javascript" src="js/fliplightbox.min.js"></script>
 	<script src="js/functions.js"></script>	
+    <script src="js/index.js"></script>
 	<script type="text/javascript">$('.portfolio').flipLightBox()</script>
   </body>
 </html>

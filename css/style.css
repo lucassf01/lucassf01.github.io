@@ -84,6 +84,21 @@ a:hover {
   color:#94A859;	
 }
 
+.google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+        text-align:center;
+}
+.google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
 hr {
 	margin-top:20px;
 	margin-bottom:40px;
