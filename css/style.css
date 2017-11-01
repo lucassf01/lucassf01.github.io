@@ -125,6 +125,7 @@ a.navbar-brand span {
 	-webkit-overflow-scrolling: touch;
 	border-top: 0;
 	width: auto; /* ANDRE */
+    background: #16381d;
 }
 .navbar-fixed-top {
   top: 0;
