@@ -700,6 +700,10 @@ a.scrollup:hover{
     padding-right: 130px;
     
     }
+    .quemsomos > img{
+        width: 30%;
+    }
+    
 }
 
 /* ANDRE */
@@ -751,4 +755,5 @@ a.scrollup:hover{
     width: 100%;
     display: initial;
   }
+
 }
